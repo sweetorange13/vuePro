@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>菜鸟教程(runoob.com)</title>
+		<style>
+			body{
+				background: #ccc;
+			}
+			.stop1{
+				stop-color:rgb(255,255,0);
+				stop-opacity:1;
+			}
+			.stop2{
+				stop-color:rgb(255,0,0);
+				stop-opacity:1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width: 80px;height: 80px;position: relative;">
+			这是文字，我要在中间
+			<svg viewBox="0 0 64 64" style="width: 100%;height: 100%;position: absolute;left: 0;top: 0;">
+				<g>	
+					<defs>
+						<!--定义渐变-->
+						<!--<linearGradient id="sGD" gradientUnits="userSpaceOnUse" x1="55" y1="46" x2="2" y2="46">-->
+						<linearGradient id="sGD">
+							<stop offset="10%" class="stop1"></stop>
+							<stop offset="100%" class="stop2"></stop>
+						</linearGradient>
+					</defs>
+					<!--<g stroke-width="4" stroke-linecap="round" fill="none" transform="rotate(103.091 32 32)">
+						<path stroke="url(#sGD)" d="M4,32 c0,15,12,28,28,28c8,0,16-4,21-9"></path>
+						<path d="M60,32 C60,16,47.464,4,32,4S4,16,4,32"></path>
+						<animateTransform values="0,32,32;360,32,32" attributeName="transform" type="rotate" repeatCount="indefinite" dur="11113750ms"></animateTransform>
+					</g>-->
+					<g stroke-width="4" stroke-linecap="round" fill="none" >
+						<path stroke="url(#sGD)" d="M4,32 c0,15,12,28,28,28c8,0,16-4,21-9"></path>
+						<path d="M60,32 C60,16,47.464,4,32,4S4,16,4,32"></path>
+						<animateTransform from='0 32 32' to='360 32 32' attributeName="transform" type="rotate" repeatCount="indefinite" dur="750ms"></animateTransform>
+					</g>
+				</g>
+			</svg>
+		</div>
+		
+		
+		<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;"></canvas>
+		<script>
+			//方式一
+//			style1();
+			function style1(){
+				let c = document.getElementById("myCanvas");
+				let ctx = c.getContext("2d");
+				//圆
+				//ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+				let start = 0,end = Math.PI;
+				setInterval(function(){
+					start += 0.5;
+					end += 0.5;
+					ctx.fillStyle = 'aquamarine';
+					ctx.fillRect(0,0,300,150);
+					ctx.beginPath();
+					ctx.arc(100,75,50,start,end);
+					ctx.strokeStyle="red";
+					ctx.lineWidth=8;
+					ctx.stroke();
+				},100);
+			}
+		</script>
+
+	</body>
+
+</html>
